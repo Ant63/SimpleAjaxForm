@@ -1,0 +1,5 @@
+name: Simple Ajax Form
+type: module
+description: Demo of simple Ajax Form
+core: 8.x
+package: Custom

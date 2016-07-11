@@ -1,0 +1,14 @@
+{
+  "name": "drupal/simple_ajax_form",
+  "type": "drupal-module",
+  "description": "Demo of simple Ajax Form",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/simple_ajax_form",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/simple_ajax_form",
+    "source": "http://cgit.drupalcode.org/simple_ajax_form"
+  },
+  "require": { }
+}
