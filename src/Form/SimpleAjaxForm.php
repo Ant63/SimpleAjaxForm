@@ -25,7 +25,6 @@ class SimpleAjaxForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-
     // Don't cache this form
     $form_state->setCached(FALSE);
 
@@ -70,22 +69,27 @@ class SimpleAjaxForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Submit logic here
-    print_r('TEST');
+
   }
 
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Validation Logic here
-    print_r('TEST');
+
   }
 
   public function simpleAjaxFormCallback(array &$form, FormStateInterface $form_state) {
 
+    // Find out what triggered the form if you need to
     $trigger = $form_state->getTriggeringElement();
 
+    // Use the returned values to format a return string
+    $string = $this->t('@name, welcome to my website', array('@name' => $form_state->getValue('name')));
+
     $form['submit_wrapper']['test'] = array(
-      '#markup' => '<div>Hello World</div>',
+      '#markup' => '<div>' . $string . '</div>',
     );
 
+    // Remove the form elements that are no longer required.
     unset($form['submit_wrapper']['name']);
     unset($form['submit_wrapper']['actions']);
 
