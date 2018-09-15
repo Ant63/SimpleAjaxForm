@@ -2,6 +2,7 @@
 
 namespace Drupal\simple_ajax_form\Form;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -72,18 +73,31 @@ class SimpleAjaxForm extends FormBase {
 
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Validation Logic here
 
   }
 
+  /**
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @return array
+   */
   public function simpleAjaxFormCallback(array &$form, FormStateInterface $form_state) {
+
+    // When this function is called the form is rebuilt. As we don't want to
+    // shown the form again the form elements that are not required are unset.
 
     // Find out what triggered the form if you need to
     $trigger = $form_state->getTriggeringElement();
 
+    $name = Html::escape($form_state->getValue('name'));
+
     // Use the returned values to format a return string
-    $string = $this->t('@name, welcome to my website', array('@name' => $form_state->getValue('name')));
+    $string = $this->t('@name, welcome to my website', array('@name' => $name));
 
     $form['submit_wrapper']['test'] = array(
       '#markup' => '<div>' . $string . '</div>',
