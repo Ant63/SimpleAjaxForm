@@ -94,6 +94,7 @@ class SimpleAjaxForm extends FormBase {
     // Find out what triggered the form if you need to
     $trigger = $form_state->getTriggeringElement();
 
+    // Escape the user input.
     $name = Html::escape($form_state->getValue('name'));
 
     // Use the returned values to format a return string
